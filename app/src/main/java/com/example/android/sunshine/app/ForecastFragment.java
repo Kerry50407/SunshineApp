@@ -38,6 +38,9 @@ import java.util.List;
  * A placeholder fragment containing a simple view.
  */
 public class ForecastFragment extends Fragment {
+
+    private ListView listView1;
+    private ArrayAdapter<String> mForecastAdapter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,18 +74,11 @@ public class ForecastFragment extends Fragment {
         String[] forecastArray = {"Today - Sunny 88/63","Tomorrow - Foggy 70/46"};
         List<String> weekForecast = new ArrayList<String>(Arrays.asList(forecastArray));
 
-        ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<String>(getActivity(), R.layout.list_item_forecast, R.id.list_item_forecast_textView, weekForecast);
-        ListView listView1 = (ListView) rootView.findViewById(R.id.listView_forecast);
-        listView1.setAdapter(arrayAdapter1);
-
-
+        mForecastAdapter = new ArrayAdapter<String>(getActivity(), R.layout.list_item_forecast, R.id.list_item_forecast_textView, weekForecast);
+        listView1 = (ListView) rootView.findViewById(R.id.listView_forecast);
+        listView1.setAdapter(mForecastAdapter);
 
         return rootView;
-    }
-
-    private String getReadableDataString(long time) {
-        SimpleDateFormat shortenDateFormat = new SimpleDateFormat("EEE MMM dd");
-        return shortenDateFormat.format(time);
     }
 
     public class FetchWeatherTask extends AsyncTask<String, Void, String[]> {
@@ -221,8 +217,15 @@ public class ForecastFragment extends Fragment {
         }
 
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
+        protected void onPostExecute(String[] result) {
+            super.onPostExecute(result);
+            if(result != null) {
+                mForecastAdapter.clear();
+                for(String dayForecastStr: result) {
+                    mForecastAdapter.add(dayForecastStr);
+                }
+            }
         }
+
     }
 }
