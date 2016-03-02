@@ -4,9 +4,12 @@ package com.example.android.sunshine.app;
  * Created by Kerry on 2016/2/23.
  */
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.text.format.Time;
 import android.util.Log;
@@ -16,6 +19,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -58,10 +62,9 @@ public class ForecastFragment extends Fragment {
         int id = item.getItemId();
         if(id == R.id.action_refresh) {
 
-
-            String url = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=44db6a862fba0b067b1930da0d769e98";
-
-            new FetchWeatherTask().execute(url);
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            String location = prefs.getString(getString(R.string.pref_location_key), getString(R.string.pref_location_default));
+            new FetchWeatherTask().execute(location);
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -78,6 +81,14 @@ public class ForecastFragment extends Fragment {
         listView1 = (ListView) rootView.findViewById(R.id.listView_forecast);
         listView1.setAdapter(mForecastAdapter);
 
+        listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String forecast = mForecastAdapter.getItem(i);
+                Intent intent = new Intent(getActivity(), DetailActivity.class).putExtra(Intent.EXTRA_TEXT, forecast);
+                startActivity(intent);
+            }
+        });
         return rootView;
     }
 
@@ -144,12 +155,12 @@ public class ForecastFragment extends Fragment {
         }
 
         @Override
-        protected String[] doInBackground(String... urls) {
+        protected String[] doInBackground(String... id) {
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
 
             String forecastJsonStr = null;
-            int id = 524901;
+
             String lang = "zh_cn";
             String appid = "44db6a862fba0b067b1930da0d769e98";
             int numDays = 7;
@@ -160,7 +171,7 @@ public class ForecastFragment extends Fragment {
                 final String APPID_PARAM = "appid";
 
                 Uri buildUri = Uri.parse(FORCAST_BASE_URL).buildUpon()
-                        .appendQueryParameter(ID_PARAM, Integer.toString(id))
+                        .appendQueryParameter(ID_PARAM, id[0])
                         .appendQueryParameter(LANG_PARAM, lang)
                         .appendQueryParameter(APPID_PARAM, appid)
                         .build();
