@@ -128,24 +128,7 @@ public class TestDb extends AndroidTestCase {
         // query if you like)
 
         // Finally, close the cursor and database
-        WeatherDbHelper dbHelper = new WeatherDbHelper(mContext);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-        ContentValues testValues = TestUtilities.createNorthPoleLocationValues();
-
-        long locationRowId;
-        locationRowId = db.insert(WeatherContract.LocationEntry.TABLE_NAME, null, testValues);
-
-        assertTrue(locationRowId != -1);
-
-        Cursor cursor = db.query(WeatherContract.LocationEntry.TABLE_NAME, null, null, null, null, null, null);
-        assertTrue("Error: No Records returned from location query", cursor.moveToFirst());
-
-        TestUtilities.validateCurrentRecord("Error: Location Query Validation Failed", cursor, testValues);
-        assertFalse("Error: More than one record returned from location query", cursor.moveToNext());
-
-        cursor.close();
-        db.close();
+        insertLocation();
     }
 
     /*
@@ -179,7 +162,27 @@ public class TestDb extends AndroidTestCase {
         // query if you like)
 
         // Finally, close the cursor and database
+        long locationRowId = insertLocation();
+        assertFalse("Error: Location Not Inserted Correctly", locationRowId == -1L);
 
+        WeatherDbHelper dbHelper = new WeatherDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ContentValues weatherValues = TestUtilities.createWeatherValues(locationRowId);
+
+        long weatherRowId;
+        weatherRowId = db.insert(WeatherContract.WeatherEntry.TABLE_NAME, null, weatherValues);
+
+        assertTrue(locationRowId != -1);
+
+        Cursor weatherCursor = db.query(WeatherContract.WeatherEntry.TABLE_NAME, null, null, null, null, null, null);
+        assertTrue("Error: No Records returned from location query", weatherCursor.moveToFirst());
+
+        TestUtilities.validateCurrentRecord("testInsertReadDb weatherEntry failed to validate", weatherCursor, weatherValues);
+        assertFalse("Error: More than one record returned from location query", weatherCursor.moveToNext());
+
+        weatherCursor.close();
+        db.close();
     }
 
 
@@ -189,6 +192,24 @@ public class TestDb extends AndroidTestCase {
         testWeatherTable and testLocationTable.
      */
     public long insertLocation() {
-        return -1L;
+        WeatherDbHelper dbHelper = new WeatherDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ContentValues testValues = TestUtilities.createNorthPoleLocationValues();
+
+        long locationRowId;
+        locationRowId = db.insert(WeatherContract.LocationEntry.TABLE_NAME, null, testValues);
+
+        assertTrue(locationRowId != -1);
+
+        Cursor cursor = db.query(WeatherContract.LocationEntry.TABLE_NAME, null, null, null, null, null, null);
+        assertTrue("Error: No Records returned from location query", cursor.moveToFirst());
+
+        TestUtilities.validateCurrentRecord("Error: Location Query Validation Failed", cursor, testValues);
+        assertFalse("Error: More than one record returned from location query", cursor.moveToNext());
+
+        cursor.close();
+        db.close();
+        return locationRowId;
     }
 }
