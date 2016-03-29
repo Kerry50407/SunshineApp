@@ -23,6 +23,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.text.format.Time;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 
 import com.example.android.sunshine.app.data.WeatherContract;
 import com.example.android.sunshine.app.data.WeatherContract.WeatherEntry;
@@ -39,14 +40,16 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Vector;
 
-public class FetchWeatherTask extends AsyncTask<String, Void, Void> {
+public class FetchWeatherTask extends AsyncTask<String, Void, String[]> {
 
     private final String LOG_TAG = FetchWeatherTask.class.getSimpleName();
 
+    private ArrayAdapter<String> mForecastAdapter;
     private final Context mContext;
 
-    public FetchWeatherTask(Context context) {
+    public FetchWeatherTask(Context context, ArrayAdapter<String> forecastAdapter) {
         mContext = context;
+        mForecastAdapter = forecastAdapter;
     }
 
     private boolean DEBUG = true;
@@ -232,7 +235,7 @@ public class FetchWeatherTask extends AsyncTask<String, Void, Void> {
     }
 
     @Override
-    protected Void doInBackground(String... params) {
+    protected String[] doInBackground(String... params) {
 
         // If there's no zip code, there's nothing to look up.  Verify size of params.
         if (params.length == 0) {
@@ -323,4 +326,15 @@ public class FetchWeatherTask extends AsyncTask<String, Void, Void> {
         }
         return null;
     }
+
+    @Override
+    protected void onPostExecute(String[] result) {
+        if(result != null && mForecastAdapter != null) {
+            mForecastAdapter.clear();
+            for(String dayForeCastStr : result) {
+                mForecastAdapter.add(dayForeCastStr);
+            }
+        }
+    }
+
 }
