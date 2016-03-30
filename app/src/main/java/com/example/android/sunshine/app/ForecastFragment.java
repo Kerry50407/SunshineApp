@@ -4,6 +4,7 @@ package com.example.android.sunshine.app;
  * Created by Kerry on 2016/2/23.
  */
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -14,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -24,7 +26,6 @@ import java.util.ArrayList;
  */
 public class ForecastFragment extends Fragment {
 
-    private ListView listView1;
     private ArrayAdapter<String> mForecastAdapter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,8 +58,16 @@ public class ForecastFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-        listView1 = (ListView) rootView.findViewById(R.id.listView_forecast);
-        listView1.setAdapter(mForecastAdapter);
+        ListView listView = (ListView) rootView.findViewById(R.id.listView_forecast);
+        listView.setAdapter(mForecastAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String forecast = mForecastAdapter.getItem(position);
+                Intent intent = new Intent(getActivity(), DetailActivity.class).putExtra(Intent.EXTRA_TEXT, forecast);
+                startActivity(intent);
+            }
+        });
 
         return rootView;
     }
