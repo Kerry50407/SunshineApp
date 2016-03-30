@@ -320,10 +320,10 @@ public class FetchWeatherTask extends AsyncTask<String, Void, String[]> {
 
             Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
                     .appendQueryParameter(QUERY_PARAM, params[0])
-//                    .appendQueryParameter(FORMAT_PARAM, format)
-//                    .appendQueryParameter(UNITS_PARAM, units)
-//                    .appendQueryParameter(DAYS_PARAM, Integer.toString(numDays))
-                    .appendQueryParameter(APPID_PARAM, "bb33052da2bc09566f5e2a5780523ec9")
+                    .appendQueryParameter(FORMAT_PARAM, format)
+                    .appendQueryParameter(UNITS_PARAM, units)
+                    .appendQueryParameter(DAYS_PARAM, Integer.toString(numDays))
+                    .appendQueryParameter(APPID_PARAM, BuildConfig.OPEN_WEATHER_MAP_API_KEY)
                     .build();
 
             URL url = new URL(builtUri.toString());
