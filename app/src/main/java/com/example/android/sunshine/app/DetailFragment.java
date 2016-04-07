@@ -10,7 +10,6 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.ShareActionProvider;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -129,13 +128,10 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
     }
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        Log.v(LOG_TAG, "In onCreateLoader");
-        Intent intent = getActivity().getIntent();
-        if(intent == null || intent.getData() == null) {
-            return null;
+        if(null != mUri) {
+            return new CursorLoader(getActivity(), mUri, FORECAST_COLUMNS, null, null, null);
         }
-
-        return new CursorLoader(getActivity(), intent.getData(), FORECAST_COLUMNS, null, null, null);
+        return null;
     }
 
     @Override
