@@ -44,6 +44,10 @@
         <service
             android:name=".service.SunshineService" />
 
+        <receiver
+            android:name=".service.SunshineService$AlarmReceiver"
+            android:enabled="true" />
+
     </application>
 
 </manifest>
