@@ -4,10 +4,6 @@ package com.example.android.sunshine.app;
  * Created by Kerry on 2016/2/23.
  */
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,7 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.android.sunshine.app.data.WeatherContract;
-import com.example.android.sunshine.app.service.SunshineService;
+import com.example.android.sunshine.app.sync.SunshineSyncAdapter;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -132,13 +128,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
     }
 
     private void updateWeather() {
-        Intent alermIntent = new Intent(getActivity(), SunshineService.AlarmReceiver.class);
-        alermIntent.putExtra(SunshineService.LOCATION_QUERY_EXTRA, Utility.getPreferredLocation(getActivity()));
-
-        PendingIntent pi = PendingIntent.getBroadcast(getActivity(), 0, alermIntent, PendingIntent.FLAG_ONE_SHOT);
-        AlarmManager am = (AlarmManager)getActivity().getSystemService(Context.ALARM_SERVICE);
-
-        am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, pi);
+        SunshineSyncAdapter.syncImmediately(getActivity());
     }
 
     @Override
