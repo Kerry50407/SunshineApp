@@ -64,4 +64,6 @@
     <string name="pref_last_notification">last_notification
     </string>
 
+    <!-- Empty Weather Database -->
+    <string name="empty_forecast_list">No Weather Information Available</string>
 </resources>
