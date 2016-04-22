@@ -385,7 +385,9 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
                     // NotificationCompatBuilder is a very convenient way to build backward-compatible
                     // notifications. Just throw int some data.
                     NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getContext())
+                            .setColor(resources.getColor(R.color.primary_light))
                             .setSmallIcon(iconId)
+                            .setLargeIcon(largeIcon)
                             .setContentTitle(title)
                             .setContentText(contentText);
 
