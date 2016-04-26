@@ -4,10 +4,12 @@ package com.example.android.sunshine.app;
  * Created by Kerry on 2016/2/23.
  */
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -138,6 +140,24 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
         // specify an adapter
         mRecyclerView.setAdapter(mForecastAdapter);
 
+        final View parallaxView = rootView.findViewById(R.id.parallax_bar);
+        if(null != parallaxView) {
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+                    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+                    @Override
+                    public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                        super.onScrolled(recyclerView, dx, dy);
+                        int max = parallaxView.getHeight();
+                        if(dy > 0) {
+                            parallaxView.setTranslationY(Math.max(-max, parallaxView.getTranslationY() - dy / 2));
+                        } else {
+                            parallaxView.setTranslationY(Math.min(0, parallaxView.getTranslationY() -dy / 2));
+                        }
+                    }
+                });
+            }
+        }
         if(savedInstanceState != null && savedInstanceState.containsKey(SELECTED_KEY)) {
             mPosition = savedInstanceState.getInt(SELECTED_KEY);
         }
@@ -185,6 +205,14 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
             mRecyclerView.smoothScrollToPosition(mPosition);
         }
         updateEmptyView();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if( null != mRecyclerView) {
+            mRecyclerView.clearOnScrollListeners();
+        }
     }
 
     @Override
