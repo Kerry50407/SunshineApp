@@ -191,4 +191,7 @@
     <string name="attribution_text">Powered by Google</string>
 
     <string name="google_app_id">1022168212709</string>
+
+    <!-- Strings related to Widgets -->
+    <string name="title_widget_today">Sunshine Today</string>
 </resources>
