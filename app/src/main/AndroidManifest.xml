@@ -3,6 +3,7 @@
     package="com.example.android.sunshine.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
@@ -27,7 +28,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCl6z6EGXXrxCFRpzxQnxxP81EYcYG07rk" />
+            android:value="AIzaSyDKqNfOLoqDKedMxH4xCf0y6Kp1Ebj4lHk" />
 
         <activity
             android:name=".MainActivity"

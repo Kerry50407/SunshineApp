@@ -184,4 +184,11 @@
 
     <!-- For Shared Element Transitions -->
     <string name="detail_icon_transition_name" translatable="false">TN_DetailIcon</string>
+
+    <string name="server_client_id">89493066015-ueia6jin8csjblf6nmumofkuka2f80cv.apps.googleusercontent.com</string>
+
+    <!-- For Google Places API Attributions -->
+    <string name="attribution_text">Powered by Google</string>
+
+    <string name="google_app_id">1022168212709</string>
 </resources>
