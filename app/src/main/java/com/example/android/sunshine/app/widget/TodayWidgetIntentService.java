@@ -80,7 +80,10 @@ public class TodayWidgetIntentService extends IntentService {
             // Create an Intent to launch MainActivity
             Intent launchIntent = new Intent(this, MainActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, launchIntent, 0);
-            views.setOnClickPendingIntent(appWidgetId, pendingIntent);
+            views.setOnClickPendingIntent(R.id.widget, pendingIntent);
+
+            // Tell the AppWidgetManager to perform an update on the current app widget
+            appWidgetManager.updateAppWidget(appWidgetId, views);
         }
     }
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
