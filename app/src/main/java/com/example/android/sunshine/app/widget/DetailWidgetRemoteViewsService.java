@@ -104,7 +104,7 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
                         Log.e(LOG_TAG, "Error retrieving large icon from " + weatherArtResourceUrl, e);
                     }
                 }
-                String description = data.getString(INDEX_WEATHER_DESC);
+                String description = Utility.getStringForWeatherCondition(DetailWidgetRemoteViewsService.this, weatherId);
                 long dateInMillis = data.getLong(INDEX_WEATHER_DATE);
                 String formattedDate = Utility.getFriendlyDayString(DetailWidgetRemoteViewsService.this, dateInMillis, false);
                 double maxTemp = data.getDouble(INDEX_WEATHER_MAX_TEMP);

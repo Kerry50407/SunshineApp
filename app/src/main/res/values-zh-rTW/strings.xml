@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="http://schemas.android.com/apk/res-auto">
+
+    <string name="app_name">Sunshine</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_detail">氣象預報</string>
+    <string name="title_activity_setting">設定</string>
+    <!-- Label for Sunshine option in art pack preference [CHAR LIMIT=25] -->
+    <string name="pref_art_pack_label_sunshine">Sunshine</string>
+
+    <!-- Label for cute dogs option in art pack preference [CHAR LIMIT=25] -->
+    <string name="pref_art_pack_label_cute_dogs">Sunshine2</string>
+    <string name="format_full_friendly_date"><xliff:g id="month">%1$s</xliff:g>, <xliff:g id="date">%2$s</xliff:g></string>
+    <!-- Wind in mph [CHAR LIMIT=25] -->
+    <string name="format_wind_mph"><xliff:g id="speed">%1$1.0f</xliff:g> mph <xliff:g id="direction">%2$s</xliff:g></string>
+    <!-- Wind in kph [CHAR LIMIT=25] -->
+    <string name="format_wind_kmh"><xliff:g id="speed">%1$1.0f</xliff:g> km/h <xliff:g id="direction">%2$s</xliff:g></string>
+
+    <string name="format_pressure"><xliff:g id="pressure">%1.0f</xliff:g> hPa</string>
+
+    <string name="format_humidity"><xliff:g id="humidity">%1.0f</xliff:g> %%</string>
+
+    <string name="format_temperature"><xliff:g id="temp">%1.0f</xliff:g>\u00B0</string>
+
+    <string name="pref_location_label">位置</string>
+    <string name="pref_enable_notifications_label">氣象通知</string>
+    <string name="action_settings">設定</string>
+    <string name="action_map">地圖位置</string>
+    <string name="action_share">分享</string>
+
+    <!-- Content description for the get current location button in the location preference -->
+    <string name="pref_current_location_desc">使用我的位置</string>
+
+    <!-- Strings used when displaying the state of the Location in settings -->
+    <string name="pref_location_error_description">無效的位置 (<xliff:g id="location_setting">%1$s</xliff:g>)"</string>
+    <string name="pref_location_unknown_description">驗證位置中... (<xliff:g id="location_setting">%1$s</xliff:g>)"</string>
+
+
+    <string name="pref_enable_notifications_true">允許</string>
+    <string name="pref_enable_notifications_false">不允許</string>
+
+    <string name="pref_units_label">溫度單位</string>
+    <string name="pref_units_label_metric">公制</string>
+    <string name="pref_units_label_imperial">英制</string>
+
+    <!-- Label for the art pack preference [CHAR LIMIT=30] -->
+    <string name="pref_art_pack_label">圖示包</string>
+
+    <!-- Date label when displaying today's weather forecast [CHAR LIMIT=20] -->
+    <string name="today">今天</string>
+
+    <!-- Date label when displaying tomorrow's weather forecast [CHAR LIMIT=20] -->
+    <string name="tomorrow">明天</string>
+
+
+    <string name="wind">起風</string>
+
+    <string name="pressure">壓力</string>
+
+    <string name="humidity">濕度</string>
+
+    <!-- Notification Format -->
+    <string name="format_notification">
+    預報: <xliff:g id="condition">%1$s</xliff:g> 最高: <xliff:g id="high">%2$s</xliff:g> 最低: <xliff:g id="low">%3$s</xliff:g>
+    </string>
+    <!-- Strings related to Notification preference -->
+    <string name="pref_last_notification">上一次通知
+    </string>
+
+    <!-- Empty Weather Database -->
+    <string name="empty_forecast_list">無法取得氣象資訊</string>
+    <string name="empty_forecast_list_no_network">無法取得氣象資訊，目前為無網路狀態</string>
+
+    <string name="empty_forecast_list_server_down">無法取得氣象資訊，伺服器異常</string>
+    <string name="empty_forecast_list_server_error">無法取得氣象資訊，伺服器或取得資訊無法辨識，請將APP更新至最新版</string>
+    <string name="empty_forecast_list_invalid_location">無法取得氣象資訊，請確認重新輸入位置</string>
+
+    <!-- A11y -->
+    <string name="a11y_forecast">預報: <xliff:g id="condition">%1$s</xliff:g></string>
+    <string name="a11y_forecast_icon">預報 icon: <xliff:g id="condition">%1$s</xliff:g></string>
+    <string name="a11y_high_temp">最高: <xliff:g id="high">%1$s</xliff:g></string>
+    <string name="a11y_low_temp">最低: <xliff:g id="low">%1$s</xliff:g></string>
+    <string name="a11y_humidity">濕度: <xliff:g id="humidity">%1$s</xliff:g></string>
+    <string name="a11y_pressure">氣壓: <xliff:g id="pressure">%1$s</xliff:g></string>
+    <string name="a11y_wind">風速與風向: <xliff:g id="wind">%1$s</xliff:g></string>
+
+    <!-- Weather Conditions -->
+    <string name="condition_2xx">暴風</string>
+    <string name="condition_3xx">細雨</string>
+    <string name="condition_500">小雨</string>
+    <string name="condition_501">中雨</string>
+    <string name="condition_502">傾盆大雨</string>
+    <string name="condition_503">強降雨</string>
+    <string name="condition_504">豪雨</string>
+    <string name="condition_511">凍雨</string>
+    <string name="condition_520">短陣雨</string>
+    <string name="condition_521">陣雨</string>
+    <string name="condition_522">驟雨</string>
+    <string name="condition_531">驟雨</string>
+    <string name="condition_600">小雪</string>
+    <string name="condition_601">下雪</string>
+    <string name="condition_602">暴雪</string>
+    <string name="condition_611">霰</string>
+    <string name="condition_612">冰珠</string>
+    <string name="condition_615">下雨、雪</string> <!-- light rain and snow -->
+    <string name="condition_616">下雨、雪</string>
+    <string name="condition_620">陣雪</string> <!-- light shower snow -->
+    <string name="condition_621">陣雪</string>
+    <string name="condition_622">陣雪</string> <!-- heavy shower snow -->
+    <string name="condition_701">薄霧</string>
+    <string name="condition_711">煙</string>
+    <string name="condition_721">陰霾</string>
+    <string name="condition_731">風砂、塵</string>
+    <string name="condition_741">霧</string>
+    <string name="condition_751">砂</string>
+    <string name="condition_761">塵</string>
+    <string name="condition_762">火山灰</string>
+    <string name="condition_771">狂風</string>
+    <string name="condition_781">龍捲風</string>
+    <string name="condition_800">晴天</string>
+    <string name="condition_801">晴時多雲</string>
+    <string name="condition_802">零散雲</string>
+    <string name="condition_803">疏鬆雲層</string>
+    <string name="condition_804">密集雲</string>
+    <string name="condition_900">龍捲風</string>
+    <string name="condition_901">熱帶氣旋</string>
+    <string name="condition_902">颶風</string>
+    <string name="condition_903">冷</string>
+    <string name="condition_904">熱</string>
+    <string name="condition_905">陣風</string>
+    <string name="condition_906">雹</string>
+    <string name="condition_951">風平浪靜</string>
+    <string name="condition_952">微風</string>
+    <string name="condition_953">微風</string>
+    <string name="condition_954">微風</string> <!-- moderate breeze -->
+    <string name="condition_955">微風</string>
+    <string name="condition_956">微風</string>
+    <string name="condition_957">起風</string>
+    <string name="condition_958">大風</string>
+    <string name="condition_959">暴風</string>
+    <string name="condition_960">暴風</string>
+    <string name="condition_961">暴風驟雨</string>
+    <string name="condition_962">颶風</string>
+
+    <string name="condition_unknown">未知 (<xliff:g id="low">%1$s</xliff:g>)</string>
+
+    <!-- Used to form a severe weather alert that reads "Heads up: <weather> in <location>!" -->
+    <string name="gcm_weather_alert">警告: %1$s 在 %2$s!</string>
+
+    <!-- Strings related to Widgets -->
+    <string name="title_widget_today">Sunshine 今天預報</string>
+    <string name="title_widget_detail">Sunshine 一周預報</string>
+
+</resources>

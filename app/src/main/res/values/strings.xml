@@ -48,7 +48,7 @@
     <string name="pref_art_pack_label_sunshine">Sunshine</string>
 
     <!-- Label for cute dogs option in art pack preference [CHAR LIMIT=25] -->
-    <string name="pref_art_pack_label_cute_dogs">Cute dogs</string>
+    <string name="pref_art_pack_label_cute_dogs">Sunshine2</string>
 
     <!-- Key name for art pack unit preference in SharedPreferences [CHAR LIMIT=NONE] -->
     <string name="pref_art_pack_key" translatable="false">art_pack</string>
@@ -60,10 +60,10 @@
     <string name="pref_art_pack_cute_dogs" translatable="false">https://raw.githubusercontent.com/udacity/Sunshine-Version-2/sunshine_master/app/src/main/res/drawable-mdpi/art_%s.png</string>
 
     <!-- Date label when displaying today's weather forecast [CHAR LIMIT=20] -->
-    <string name="today">今天</string>
+    <string name="today">Today</string>
 
     <!-- Date label when displaying tomorrow's weather forecast [CHAR LIMIT=20] -->
-    <string name="tomorrow">明天</string>
+    <string name="tomorrow">Tomorrow</string>
 
     <!-- Date format for displaying day of week and date (i.e. Mon Jun 1) [CHAR LIMIT=20] -->
     <string name="format_full_friendly_date"><xliff:g id="month">%1$s</xliff:g>, <xliff:g id="date">%2$s</xliff:g></string>
@@ -88,8 +88,8 @@
 
     <!-- Account type (for sync-adapter authenticator) -->
     <!-- SyncAdapter related -->
-    <string name="sync_account_type">sunshine.example.com</string>
-    <string name="content_authority">com.example.android.sunshine.app</string>
+    <string name="sync_account_type"  translatable="false">sunshine.example.com</string>
+    <string name="content_authority" translatable="false">com.example.android.sunshine.app</string>
 
     <!-- Notification Format -->
     <string name="format_notification">
@@ -185,17 +185,17 @@
     <!-- For Shared Element Transitions -->
     <string name="detail_icon_transition_name" translatable="false">TN_DetailIcon</string>
 
-    <string name="server_client_id">89493066015-ueia6jin8csjblf6nmumofkuka2f80cv.apps.googleusercontent.com</string>
+    <string name="server_client_id"  translatable="false">89493066015-ueia6jin8csjblf6nmumofkuka2f80cv.apps.googleusercontent.com</string>
 
     <!-- For Google Places API Attributions -->
-    <string name="attribution_text">Powered by Google</string>
+    <string name="attribution_text" translatable="false">Powered by Google</string>
 
-    <string name="google_app_id">1022168212709</string>
+    <string name="google_app_id" translatable="false">1022168212709</string>
 
     <!-- Strings related to Widgets -->
     <string name="title_widget_today">Sunshine Today</string>
     <string name="title_widget_detail">Sunshine Details</string>
 
     <!-- Strings related to Muzei Source -->
-    <string name="muzei_description">Today\'s weather</string>
+    <string name="muzei_description" translatable="false">Today\'s weather</string>
 </resources>
