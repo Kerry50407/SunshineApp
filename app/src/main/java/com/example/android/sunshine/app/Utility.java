@@ -557,27 +557,27 @@ public class Utility {
         // Based on weather code data found at:
         // http://bugs.openweathermap.org/projects/api/wiki/Weather_Condition_Codes
         if (weatherId >= 200 && weatherId <= 232) {
-            return String.format(Locale.US, formatArtUrl, R.string.condition_2xx);
+            return String.format(Locale.US, formatArtUrl, "storm");
         } else if (weatherId >= 300 && weatherId <= 321) {
-            return String.format(Locale.US, formatArtUrl, R.string.condition_3xx);
+            return String.format(Locale.US, formatArtUrl, "drizzle");
         } else if (weatherId >= 500 && weatherId <= 504) {
-            return String.format(Locale.US, formatArtUrl, R.string.condition_500);
+            return String.format(Locale.US, formatArtUrl, "light_rain");
         } else if (weatherId == 511) {
-            return String.format(Locale.US, formatArtUrl, R.string.condition_511);
+            return String.format(Locale.US, formatArtUrl, "freezing_rain");
         } else if (weatherId >= 520 && weatherId <= 531) {
-            return String.format(Locale.US, formatArtUrl, R.string.condition_521);
+            return String.format(Locale.US, formatArtUrl, "shower");
         } else if (weatherId >= 600 && weatherId <= 622) {
-            return String.format(Locale.US, formatArtUrl, R.string.condition_601);
+            return String.format(Locale.US, formatArtUrl, "snow");
         } else if (weatherId >= 701 && weatherId <= 761) {
-            return String.format(Locale.US, formatArtUrl, R.string.condition_741);
+            return String.format(Locale.US, formatArtUrl, "fog");
         } else if (weatherId == 761 || weatherId == 781) {
-            return String.format(Locale.US, formatArtUrl, R.string.condition_960);
+            return String.format(Locale.US, formatArtUrl, "storm");
         } else if (weatherId == 800) {
-            return String.format(Locale.US, formatArtUrl, R.string.condition_800);
+            return String.format(Locale.US, formatArtUrl, "clear");
         } else if (weatherId == 801) {
-            return String.format(Locale.US, formatArtUrl, R.string.condition_801);
+            return String.format(Locale.US, formatArtUrl, "mostly_clear");
         } else if (weatherId >= 802 && weatherId <= 804) {
-            return String.format(Locale.US, formatArtUrl, R.string.condition_802);
+            return String.format(Locale.US, formatArtUrl, "scattered_clouds");
         }
         return null;
     }
