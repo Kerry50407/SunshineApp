@@ -3,6 +3,7 @@ package com.example.android.sunshine.app;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
@@ -19,6 +20,8 @@ import com.example.android.sunshine.app.gcm.RegistrationIntentService;
 import com.example.android.sunshine.app.sync.SunshineSyncAdapter;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.gcm.GoogleCloudMessaging;
+import com.google.android.gms.iid.InstanceID;
 
 
 public class MainActivity extends AppCompatActivity implements ForecastFragment.Callback{
@@ -73,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements ForecastFragment.
                 Intent intent = new Intent(this, RegistrationIntentService.class);
                 startService(intent);
             }
+            getDeviceToken();
         }
     }
 
@@ -150,5 +154,26 @@ public class MainActivity extends AppCompatActivity implements ForecastFragment.
             return false;
         }
         return true;
+    }
+
+    private void getDeviceToken() {
+        new AsyncTask() {
+
+            @Override
+            protected Object doInBackground(Object... params) {
+                try {
+                    InstanceID instanceID = InstanceID.getInstance(MainActivity.this);
+
+                    String token = instanceID.getToken(getString(R.string.gcm_defaultSenderId),
+                            GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
+
+                    Log.i(LOG_TAG, "GCM Registration Token: " + token);
+
+                }catch (Exception e) {
+                    Log.d(LOG_TAG, "Failed to complete token refresh", e);
+                }
+                return null;
+            }
+        }.execute(null, null, null);
     }
 }

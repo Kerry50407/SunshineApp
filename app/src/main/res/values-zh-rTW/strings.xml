@@ -145,7 +145,7 @@
     <string name="condition_unknown">未知 (<xliff:g id="low">%1$s</xliff:g>)</string>
 
     <!-- Used to form a severe weather alert that reads "Heads up: <weather> in <location>!" -->
-    <string name="gcm_weather_alert">警告: %1$s 在 %2$s!</string>
+    <string name="gcm_weather_alert">警告: %1$s 將在 %2$s發生!</string>
 
     <!-- Strings related to Widgets -->
     <string name="title_widget_today">Sunshine 今天預報</string>
